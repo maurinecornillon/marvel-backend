@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const axios = require("axios");
-const { response } = require("express");
 
 const apiKey = process.env.API_SECRET;
 

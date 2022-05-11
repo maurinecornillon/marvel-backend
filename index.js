@@ -15,6 +15,7 @@ const charactersRoutes = require("./routes/characters");
 app.use(charactersRoutes);
 const comicsRoutes = require("./routes/comics");
 app.use(comicsRoutes);
+
 //serveur
 
 app.get("/", (req, res) => {
