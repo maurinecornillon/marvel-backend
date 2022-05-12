@@ -55,29 +55,29 @@ router.post("/signup", async (req, res) => {
 //------------------------------------------//
 // CONNEXION
 
-// router.post("/login", async (req, res) => {
-//   console.log("Connexion en cours");
+router.post("/login", async (req, res) => {
+  console.log("Connexion en cours");
 
-//   try {
-//     const user = await User.findOne({ email: req.fields.email });
-//     const newHash = SHA256(req.fields.password + user.salt).toString(encBase64);
-//     if (!user) {
-//       res.status(400).json({ message: "Le compte n'existe pas" });
-//     } else if (newHash !== user.hash) {
-//       console.log(newHash);
-//       console.log(user.hash);
-//       res.status(400).json({ message: "mdp invalide" });
-//     } else {
-//       res.json({
-//         _id: user.id,
-//         token: user.token,
-//         account: user.account,
-//       });
-//     }
-//   } catch (error) {
-//     res.status(400).json({ error: error.message });
-//   }
-// });
+  try {
+    const user = await Hote.findOne({ email: req.fields.email });
+    const newHash = SHA256(req.fields.password + user.salt).toString(encBase64);
+    if (!user) {
+      res.status(400).json({ message: "Le compte n'existe pas" });
+    } else if (newHash !== user.hash) {
+      console.log(newHash);
+      console.log(user.hash);
+      res.status(400).json({ message: "mdp invalide" });
+    } else {
+      res.json({
+        _id: user.id,
+        token: user.token,
+        account: user.account,
+      });
+    }
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
 
 // export des routes
 module.exports = router;
